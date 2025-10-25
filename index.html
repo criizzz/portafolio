@@ -1,20 +1,340 @@
-<html lang="en">
+<!doctype html>
+<html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portafolio Cristian Cabral</title>
-    <link rel="stylesheet" href="./src/css/style.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Portfolio — Cristian Cabral</title>
+    <style>
+        :root {
+            --bg: #0f0f10;
+            --card: #111214;
+            --accent: #ffb400;
+            --muted: #9aa0a6;
+            --glass: rgba(255, 255, 255, 0.03);
+            --glass-2: rgba(255, 255, 255, 0.02);
+            --card-radius: 16px;
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            background: linear-gradient(180deg, #0b0b0c 0%, #141416 100%);
+            color: #e6e9eb;
+            line-height: 1.45
+        }
+
+        .wrap {
+            max-width: 1100px;
+            margin: 36px auto;
+            padding: 28px
+        }
+
+        header {
+            display: flex;
+            gap: 20px;
+            align-items: center
+        }
+
+        .avatar {
+            width: 140px;
+            height: 140px;
+            border-radius: 12px;
+            flex: 0 0 140px;
+            background: linear-gradient(135deg, var(--accent), #ff6b6b);
+            display: grid;
+            place-items: center;
+            font-weight: 700;
+            font-size: 28px;
+            color: #111
+        }
+
+        .intro {
+            flex: 1
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 32px;
+            letter-spacing: 0.6px
+        }
+
+        p.lead {
+            margin: 6px 0 0;
+            color: var(--muted)
+        }
+
+        .meta {
+            display: flex;
+            gap: 12px;
+            margin-top: 12px;
+            flex-wrap: wrap
+        }
+
+        .chip {
+            background: var(--glass);
+            padding: 8px 12px;
+            border-radius: 999px;
+            font-size: 13px;
+            color: var(--muted);
+            display: inline-flex;
+            gap: 8px;
+            align-items: center
+        }
+
+        main {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 24px;
+            margin-top: 28px
+        }
+
+        .panel {
+            background: linear-gradient(180deg, var(--card), #0d0d0e);
+            border-radius: var(--card-radius);
+            padding: 20px;
+            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.6)
+        }
+
+        .projects {
+            display: grid;
+            gap: 14px
+        }
+
+        .project {
+            padding: 14px;
+            border-radius: 12px;
+            background: var(--glass-2);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px
+        }
+
+        .project .left {
+            max-width: 68%
+        }
+
+        .project h3 {
+            margin: 0 0 6px;
+            font-size: 18px
+        }
+
+        .project p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 14px
+        }
+
+        .tags {
+            margin-top: 8px;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 6px 10px;
+            border-radius: 999px;
+            font-size: 12px;
+            color: var(--muted)
+        }
+
+        aside {
+            position: relative
+        }
+
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px
+        }
+
+        .skill {
+            background: linear-gradient(180deg, #0e0e0f, #0a0a0b);
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 13px
+        }
+
+        .education {
+            margin-top: 16px
+        }
+
+        .contact {
+            margin-top: 18px;
+            padding: 12px;
+            border-radius: 10px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01))
+        }
+
+        footer {
+            margin-top: 28px;
+            text-align: center;
+            color: var(--muted);
+            font-size: 13px
+        }
+
+        .controls {
+            display: flex;
+            gap: 8px;
+            align-items: center
+        }
+
+        input[type=search] {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 8px 12px;
+            border-radius: 999px;
+            color: var(--muted);
+            outline: none
+        }
+
+        button.btn {
+            background: var(--accent);
+            border: none;
+            color: #111;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer
+        }
+
+        @media (max-width:980px) {
+            main {
+                grid-template-columns: 1fr
+            }
+
+            aside {
+                order: -1;
+                margin-bottom: 18px
+            }
+
+            .avatar {
+                width: 96px;
+                height: 96px
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <main class="display-flex flex-col justify-center align-center w-100 h-100">
-        <img src="./src/assets/img/trabajando.png">
-        <h1>
-            Hola, bienvenido a mi portafolio
-        </h1>
-        <br>
-        <h2>
-            aun esta en <b>progreso</b>, vuelve en otro momento!
-        </h2>
-    </main>
+    <div class="wrap">
+        <header>
+            <!--<div class="avatar">CC</div>-->
+            <div class="intro">
+                <h1>Cristian Cabral</h1>
+                <p class="lead">
+                    Soy un programador junior interesado en brindar una mejor experiencia de diseño para usuarios.
+                </p>
+                <div class="meta">
+                    <span class="chip">📍 Argentina</span>
+                    <span class="chip">💼 Buscando proyectos freelance</span>
+                    <span class="chip">📚 Estudiante de Informática / Practicante</span>
+                </div>
+            </div>
+            <div style="margin-left:16px;display:flex;flex-direction:column;gap:8px;align-items:flex-end">
+                <div class="controls">
+                    <input id="q" type="search" placeholder="buscar proyectos...">
+                    <button id="clear" class="btn">Limpiar</button>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class="panel">
+                <h2 style="margin-top:0">Proyectos</h2>
+                <div class="projects" id="projects"></div>
+            </section>
+
+            <aside>
+                <div class="panel">
+                    <h3 style="margin-top:0">Tecnologías</h3>
+                    <div class="skills" id="skills"></div>
+
+                    <div class="education">
+                        <h4 style="margin-bottom:6px">Educación</h4>
+                        <div style="color:var(--muted);font-size:14px">
+                            E.E.S.T.Nº3 — Estudiante de la escuela técnica nº3 de Tortuguitas
+                        </div>
+                    </div>
+
+                    <div class="contact">
+                        <strong>Contacto</strong>
+                        <div style="margin-top:8px;color:var(--muted);font-size:14px">
+                            Email:
+                            <a href="mailto:cristiancabral826@gmail.com" style="color: white;">
+                                cristiancabral826@gmail.com
+                            </a><br>
+                            Ubicación: Argentina<br>
+                            GitHub:
+                            <a href="https://github.com/criizzz" target="_blank" style="color: white;">
+                                github.com/criizzz
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </main>
+
+        <footer>
+            © 2025 Cristian Cabral — Todos los derechos reservados
+        </footer>
+    </div>
+
+    <script>
+        const DATA = {
+            skills: ['HTML', 'CSS', 'JavaScript', 'SQL', 'Django', 'Python', 'Git', 'PHP'],
+            projects: [
+                { title: 'Tesis - IA para optimizar bases de datos / conversión de formatos', desc: 'IA que optimiza bases de datos y convierte entre Excel, JSON y TXT.', tags: ['IA', 'Python', 'Html', 'Css', 'Javascript'], url: 'https://datasnap.escuelarobertoarlt.com/' },
+                { title: 'Astrion - Red social', desc: 'Pagina web para publicar momentos alegres y comentar', tags: ['Django', 'Python', 'Css'], url: 'https://github.com/criizzz/Astrion' },
+            ]
+        };
+
+        const skillsEl = document.getElementById('skills');
+        DATA.skills.forEach(s => {
+            const d = document.createElement('div');
+            d.className = 'skill';
+            d.textContent = s;
+            skillsEl.appendChild(d);
+        });
+
+        const projectsEl = document.getElementById('projects');
+        function renderProjects(filter) {
+            projectsEl.innerHTML = '';
+            const q = (filter || '').toLowerCase();
+            DATA.projects
+                .filter(p => !q || p.title.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q) || p.tags.join(' ').toLowerCase().includes(q))
+                .forEach(p => {
+                    const el = document.createElement('div');
+                    el.className = 'project';
+                    el.innerHTML = `
+                        <div class="left">
+                            <h3>${p.title}</h3>
+                            <p>${p.desc}</p>
+                            <div class="tags">${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+                        </div>
+                        <div style="text-align:right">
+                            <a href="${p.url}" target="_blank" style="color:var(--accent);font-weight:700;text-decoration:none;">Ver proyecto ↗</a>
+                        </div>
+                    `;
+                    projectsEl.appendChild(el);
+                });
+        }
+
+        renderProjects();
+
+        const qInput = document.getElementById('q');
+        qInput.addEventListener('input', () => renderProjects(qInput.value));
+        document.getElementById('clear').addEventListener('click', () => { qInput.value = ''; renderProjects(); qInput.focus(); });
+        window.addEventListener('keydown', (e) => { if (e.key === '/' && document.activeElement.tagName !== 'INPUT') { e.preventDefault(); qInput.focus(); } });
+    </script>
 </body>
+
 </html>
